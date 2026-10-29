@@ -1,0 +1,620 @@
+/* ─────────────────────────────────────────────────────────────────────────────
+   Neobrutalist × retro skin for the page AROUND the calculator.
+   The calculator chassis itself keeps its realistic dark Casio-style look.
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  --nb-ink: #14120b;
+  --nb-yellow: #ffd23f;
+  --nb-pink: #ff6b6b;
+  --nb-teal: #00a878;
+  --nb-cream: #fffdf2;
+  --nb-paper: #f7efd9;
+  --font-retro: 'VT323', var(--font-geist-mono), ui-monospace, monospace;
+  --font-heavy: 'Archivo Black', var(--font-geist-sans), system-ui, sans-serif;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* dotted paper background — halftone retro */
+.retro-page {
+  min-height: 100vh;
+  background-color: var(--nb-paper);
+  background-image: radial-gradient(rgba(20, 18, 11, 0.08) 1.1px, transparent 1.3px);
+  background-size: 13px 13px;
+}
+
+.retro-page button {
+  touch-action: manipulation;
+}
+
+/* ── neobrutalist title card & chips ──────────────────────────────────────── */
+
+.nb-title {
+  display: inline-block;
+  font-family: var(--font-heavy);
+  font-size: clamp(24px, 5.5vw, 36px);
+  line-height: 1;
+  color: var(--nb-ink);
+  background: var(--nb-yellow);
+  border: 3px solid var(--nb-ink);
+  border-radius: 10px;
+  box-shadow: 6px 6px 0 var(--nb-ink);
+  padding: 12px 20px 11px;
+  letter-spacing: 0.01em;
+}
+
+.nb-title .es {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 0.42em;
+  letter-spacing: 0.18em;
+  transform: translateY(-3px);
+  opacity: 0.85;
+}
+
+.nb-chip {
+  display: inline-block;
+  font-family: var(--font-heavy);
+  font-size: 10px;
+  letter-spacing: 0.07em;
+  color: var(--nb-ink);
+  background: #fff;
+  border: 2.5px solid var(--nb-ink);
+  border-radius: 999px;
+  box-shadow: 3px 3px 0 var(--nb-ink);
+  padding: 6px 13px 5px;
+  white-space: nowrap;
+}
+
+/* ── retro marquee strip ──────────────────────────────────────────────────── */
+
+.marquee {
+  border: 3px solid var(--nb-ink);
+  border-radius: 8px;
+  background: var(--nb-ink);
+  overflow: hidden;
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: nbmarquee 26s linear infinite;
+}
+
+.marquee-track span {
+  font-family: var(--font-retro);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  color: var(--nb-yellow);
+  padding: 4px 0 2px;
+  white-space: nowrap;
+}
+
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes nbmarquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── retro footer bar ─────────────────────────────────────────────────────── */
+
+.retro-foot {
+  background: var(--nb-ink);
+  color: #ead9a8;
+  font-family: var(--font-retro);
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  line-height: 1.55;
+  text-align: center;
+  padding: 11px 16px calc(11px + env(safe-area-inset-bottom));
+}
+
+.retro-foot kbd {
+  font-family: inherit;
+  background: var(--nb-yellow);
+  color: var(--nb-ink);
+  border-radius: 3px;
+  padding: 0 5px;
+  margin: 0 1px;
+}
+
+/* ── misc neobrutalist helpers ────────────────────────────────────────────── */
+
+/* ── SALES & VAT view — neobrutalist cards, receipt, tidy chips ───────────── */
+
+.nb-card {
+  background: var(--nb-cream);
+  border: 3px solid var(--nb-ink);
+  border-radius: 12px;
+  box-shadow: 6px 6px 0 var(--nb-ink);
+}
+
+.nb-h {
+  font-family: var(--font-heavy);
+  font-size: 13px;
+  letter-spacing: 0.07em;
+  display: inline-block;
+  background: linear-gradient(transparent 62%, var(--nb-yellow) 62%);
+  padding: 0 5px 1px 0;
+  margin-bottom: 12px;
+}
+
+.nb-in {
+  width: 100%;
+  height: 48px;
+  border: 3px solid var(--nb-ink);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--nb-ink);
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 18px;
+  padding: 0 14px;
+}
+.nb-in:focus {
+  outline: none;
+  box-shadow: 4px 4px 0 var(--nb-pink);
+}
+.nb-in.prime {
+  background: #fff6cf;
+}
+.nb-in::placeholder {
+  color: #b3ac97;
+  opacity: 1;
+}
+
+.nb-badge {
+  font-family: var(--font-heavy);
+  font-size: 8.5px;
+  letter-spacing: 0.07em;
+  border: 2px solid var(--nb-ink);
+  border-radius: 5px;
+  padding: 2px 5px;
+  white-space: nowrap;
+}
+.nb-badge.type {
+  background: var(--nb-teal);
+  color: #fff;
+}
+.nb-badge.auto {
+  background: #fff;
+  color: #8a8468;
+}
+
+.nb-mode {
+  position: relative;
+  border: 3px solid var(--nb-ink);
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 4px 4px 0 var(--nb-ink);
+  padding: 12px 10px 11px;
+  text-align: center;
+  cursor: pointer;
+  font-family: var(--font-heavy);
+  transition: transform 60ms ease, box-shadow 60ms ease;
+  touch-action: manipulation;
+}
+.nb-mode b {
+  display: block;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+}
+.nb-mode small {
+  display: block;
+  margin-top: 3px;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 600;
+  color: #6b6455;
+  letter-spacing: 0.02em;
+}
+.nb-mode.on {
+  background: var(--nb-yellow);
+  box-shadow: 2px 2px 0 var(--nb-ink);
+  transform: translate(2px, 2px);
+}
+.nb-mode .defbadge {
+  position: absolute;
+  top: -11px;
+  right: 10px;
+  background: var(--nb-pink);
+  color: #fff;
+  border: 2.5px solid var(--nb-ink);
+  border-radius: 6px;
+  font-family: var(--font-heavy);
+  font-size: 8px;
+  letter-spacing: 0.08em;
+  padding: 3px 6px;
+  transform: rotate(3deg);
+}
+
+.nb-rate-chip {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 12.5px;
+  font-weight: 700;
+  border: 2.5px solid var(--nb-ink);
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 2.5px 2.5px 0 var(--nb-ink);
+  padding: 5px 12px;
+  cursor: pointer;
+  transition: transform 50ms ease, box-shadow 50ms ease;
+  touch-action: manipulation;
+}
+.nb-rate-chip:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--nb-ink);
+}
+.nb-rate-chip.on {
+  background: var(--nb-yellow);
+}
+
+.stp {
+  width: 46px;
+  height: 48px;
+  flex: none;
+  border: 3px solid var(--nb-ink);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 3px 3px 0 var(--nb-ink);
+  font-size: 22px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.stp:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--nb-ink);
+}
+
+/* tidy suggestion chips */
+.nb-tidy {
+  border: 3px dashed var(--nb-ink);
+  border-radius: 12px;
+  background: #fffbe6;
+  padding: 14px 16px;
+}
+.tidy-t {
+  font-family: var(--font-heavy);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+  color: var(--nb-ink);
+}
+.tchip {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  border: 3px solid var(--nb-ink);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 4px 4px 0 var(--nb-ink);
+  padding: 8px 12px;
+  cursor: pointer;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  text-align: left;
+  transition: transform 60ms ease, box-shadow 60ms ease;
+  touch-action: manipulation;
+}
+.tchip:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--nb-ink);
+}
+.tchip b {
+  font-size: 14px;
+  white-space: nowrap;
+}
+.tchip small {
+  font-size: 10.5px;
+  color: #6b6455;
+  white-space: nowrap;
+}
+.tchip.rnd {
+  border-color: #4c3591;
+  background: #f5f1ff;
+}
+.tchip.rnd b {
+  color: #4c3591;
+}
+
+/* chunky action buttons */
+.nb-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  border: 3px solid var(--nb-ink);
+  border-radius: 10px;
+  box-shadow: 4px 4px 0 var(--nb-ink);
+  padding: 11px 12px;
+  font-family: var(--font-heavy);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform 60ms ease, box-shadow 60ms ease;
+  touch-action: manipulation;
+}
+.nb-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--nb-ink);
+}
+.nb-btn.b-yellow {
+  background: var(--nb-yellow);
+}
+.nb-btn.b-white {
+  background: #fff;
+}
+.nb-btn.b-teal {
+  background: var(--nb-teal);
+  color: #fff;
+}
+.nb-btn.b-pink {
+  background: var(--nb-pink);
+  color: #fff;
+}
+
+/* the side button that opens the calculator */
+.nb-side-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--nb-yellow);
+  border: 3px solid var(--nb-ink);
+  border-radius: 12px;
+  box-shadow: 6px 6px 0 var(--nb-ink);
+  padding: 13px 18px;
+  font-family: var(--font-heavy);
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition: transform 60ms ease, box-shadow 60ms ease;
+  touch-action: manipulation;
+  rotate: 0.8deg;
+}
+.nb-side-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: 2px 2px 0 var(--nb-ink);
+}
+.nb-side-btn.back {
+  background: #fff;
+}
+
+/* paper receipt */
+.bill {
+  background: #fffdf2;
+  border: 3px solid var(--nb-ink);
+  border-radius: 12px;
+  box-shadow: 6px 6px 0 var(--nb-ink);
+  font-family: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  overflow: hidden;
+}
+.bill-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--nb-ink);
+  color: var(--nb-yellow);
+  font-family: var(--font-retro);
+  font-size: 17px;
+  letter-spacing: 0.12em;
+  padding: 7px 14px 6px;
+}
+.bill-head .mode-tag {
+  margin-left: auto;
+  border: 2px solid var(--nb-yellow);
+  border-radius: 5px;
+  color: var(--nb-yellow);
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 1px 6px;
+  white-space: nowrap;
+}
+.bill-body {
+  padding: 12px 14px 6px;
+}
+.brow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 4px 0;
+  font-size: 13px;
+}
+.brow > span {
+  color: #6b6455;
+  font-weight: 600;
+  font-size: 11.5px;
+}
+.brow > b,
+.brow > strong {
+  font-weight: 700;
+  font-size: 16px;
+  color: #1a1710;
+  text-align: right;
+}
+.brow.big {
+  padding: 6px 0 2px;
+}
+.brow.big > strong {
+  font-size: clamp(21px, 5.5vw, 26px);
+}
+.bdiv {
+  border-top: 2px dashed #d8d2b8;
+  margin: 8px 0;
+}
+.verify {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  border: 2.5px solid var(--nb-ink);
+  border-radius: 9px;
+  padding: 7px 10px;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+.verify.ok {
+  background: #d9f5e4;
+}
+.verify.warn {
+  background: #fde8c8;
+}
+.bill-barcode {
+  height: 26px;
+  margin: 10px 14px 0;
+  background: repeating-linear-gradient(
+    90deg,
+    #14120b 0 2px,
+    transparent 2px 5px,
+    #14120b 5px 6px,
+    transparent 6px 10px,
+    #14120b 10px 11px,
+    transparent 11px 16px
+  );
+  opacity: 0.85;
+}
+.bill-thanks {
+  text-align: center;
+  font-family: var(--font-retro);
+  font-size: 14px;
+  letter-spacing: 0.2em;
+  color: #8a8468;
+  padding: 4px 0 10px;
+}
+
+/* sales ledger (per-device history) */
+.ledger-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--nb-ink);
+  border-radius: 8px 8px 0 0;
+  color: var(--nb-yellow);
+  font-family: var(--font-retro);
+  font-size: 16px;
+  letter-spacing: 0.1em;
+  padding: 7px 13px 6px;
+}
+.ledger-head .cnt {
+  margin-left: auto;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  border: 2px solid var(--nb-yellow);
+  border-radius: 5px;
+  padding: 0 6px;
+}
+.ledger-body {
+  max-height: 300px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+.ledger-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 12px 8px;
+  border-bottom: 2px dashed #d8d2b8;
+  cursor: pointer;
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  transition: background 120ms ease;
+}
+.ledger-row:hover {
+  background: #fff3c4;
+}
+.ledger-row .l-main {
+  flex: 1;
+  min-width: 0;
+}
+.ledger-row .l-line {
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #1a1710;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-row .l-sub {
+  font-size: 10.5px;
+  color: #8a8468;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ledger-row .l-tag {
+  flex: none;
+  font-size: 8.5px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  border: 2px solid var(--nb-ink);
+  border-radius: 5px;
+  padding: 2px 5px;
+  background: #fff;
+  color: #6b6455;
+}
+.ledger-row .l-tag.rev {
+  background: var(--nb-pink);
+  color: #fff;
+}
+.ledger-row .l-del {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border: 2.5px solid var(--nb-ink);
+  border-radius: 7px;
+  background: var(--nb-pink);
+  color: #fff;
+  box-shadow: 2px 2px 0 var(--nb-ink);
+  cursor: pointer;
+  transition: transform 60ms ease, box-shadow 60ms ease;
+}
+.ledger-row .l-del:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--nb-ink);
+}
+.ledger-foot {
+  padding: 7px 13px 9px;
+  border-top: 2px dashed #d8d2b8;
+  font-family: var(--font-retro);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  color: #8a8468;
+  text-align: center;
+}
+.ledger-empty {
+  padding: 22px 16px;
+  text-align: center;
+  font-family: var(--font-retro);
+  font-size: 14.5px;
+  letter-spacing: 0.08em;
+  color: #8a8468;
+  line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+  .marquee-track span:last-child {
+    display: none;
+  }
+}

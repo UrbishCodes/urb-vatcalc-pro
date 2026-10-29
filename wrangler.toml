@@ -1,0 +1,20 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# URB VATCalc Pro — Cloudflare Workers (static assets) deployment
+#
+#   1)  npm run build                 → emits the static site into ./out
+#   2)  npx wrangler login            → once, opens the browser to authenticate
+#   3)  npx wrangler deploy           → uploads ./out as a Workers static site
+#
+# The app is 100% client-side (no API routes, no database, no environment
+# variables, no secrets) — Workers Static Assets is all it needs.
+# Final URL: https://urb-vatcalc-pro.<your-subdomain>.workers.dev
+# ─────────────────────────────────────────────────────────────────────────────
+
+name = "urb-vatcalc-pro"
+compatibility_date = "2025-01-15"
+
+[assets]
+directory = "./out"
+
+# any unknown path simply serves the app (single-page friendly)
+not_found_handling = "single-page-application"
